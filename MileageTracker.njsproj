@@ -31,11 +31,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="app.js" />
+    <Compile Include="public\javascript\put.js" />
     <Compile Include="routes\index.js" />
     <Compile Include="routes\users.js" />
     <Content Include="package.json" />
+    <Content Include="public\images\gtr.jpg" />
     <Content Include="public\stylesheets\main.css" />
-    <Content Include="public\Views\Page1.html">
+    <Content Include="public\Views\index.html">
       <SubType>Code</SubType>
     </Content>
     <Content Include="README.md" />
@@ -46,7 +48,7 @@
   <ItemGroup>
     <Folder Include="public\" />
     <Folder Include="public\images\" />
-    <Folder Include="public\javascripts\" />
+    <Folder Include="public\javascript\" />
     <Folder Include="public\Views\" />
     <Folder Include="public\stylesheets\" />
     <Folder Include="routes\" />
