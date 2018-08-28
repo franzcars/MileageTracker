@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Mileage Tracker</title>
+    <link rel="stylesheet" href="/stylesheets/main.css">
+</head>
+<body>
+    <div class="w3-grey">
+        <img class="image center w3-grey" src=".\images\gtr.jpg">
+    </div>
+    <div class="w3-containter w3-displaycontainer w3-center w3-grey">
+        <div class="jumbotron w3-container">
+            <h1>Welcome to The Quick Miliage Tracker!</h1>
+        </div>
+        <h2 class="w3-red"></h2>
+        <br>
+        <h2>Enter the vin to check the mileage</h2>
+        <form action="/get" method="POST">
+            <lable>Enter the Vin </lable>
+            <br>
+            <input type="text" name="Vin" id="Vin">
+            <br>
+            <input class="w3-button w3-black" type="submit" value="Check Mileage" name="Check Mileage" id="submit">
+        </form>
+        <br>
+        <h2>Please add a Vehicle or Update</h2>
+        <form  name="update" action="javascript:handleUpdate()">
+            <lable>Enter the Vin</lable>
+            <br>
+            <input type="text" name="Vin" id="Vin">
+            <br>
+            <lable>Enter the mileage</lable>
+            <br>
+            <input type="text" name="Mileage" id="Mileage">
+            <br>
+            <input class="w3-button w3-black" type="submit" value="Add or Update" name="Add a update" id="submit">
+        </form>
+    </div>
+</body>
+</html>
