@@ -23,14 +23,20 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.engine('html', require('ejs').renderFile);
-app.set('view engine', 'html');
+app.engine('ejs', require('ejs').renderFile);
+app.set('view engine', 'ejs');
 
-app.get('/', (req, res) => {
-    res.sendFile('index.html', {
-        root: './public/views'
+app.all('/', (req, res) => {
+     console.log(req.body.Vin);
+
+    res.render('index', {
+        title: 'Justin'
     }); });
 
+app.post('/', function (req, res) {
+
+    console.log(req.body.Vin);
+});
 /*
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
