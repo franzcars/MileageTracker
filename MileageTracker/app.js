@@ -34,7 +34,6 @@ app.all('/', (req, res) => {
     console.log(req.body);
     if (req.body.Vin) {
         if (req.body.Check) {
-            console.log("")
             handleSearch(req);
         }
         //console.log(req.body.Vin);
@@ -43,7 +42,8 @@ app.all('/', (req, res) => {
         }
     }
     res.render('index', {
-        title: 'Justin'
+        title: 'Justin',
+        Vin: ''
     }); });
 
 app.post('/', function (req, res) {

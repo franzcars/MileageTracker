@@ -1,11 +1,7 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <title>Mileage Tracker</title>
-    <link rel="stylesheet" href="/stylesheets/main.css">
+﻿<% include ../public/Partials/head %>
+<% include ../public/Partials/header %>
 
-</head>
-<body>
+
     <div class="w3-grey">
         <img class="image center w3-grey" src=".\images\gtr.jpg">
     </div>
@@ -13,6 +9,8 @@
         <div class="jumbotron w3-container">
             <h1>Welcome to The Quick Miliage Tracker <%= title %>!</h1>
         </div>
+		<%if (Vin) { %> the Vin is <% Vin%> <%}%>
+		Vin is here<%= Vin%>
         <h2 class="w3-red"></h2>
         <br>
         <h2>Enter the vin to check the mileage</h2>
@@ -40,4 +38,4 @@
 
 
 </body>
-</html>
+
