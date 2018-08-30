@@ -9,6 +9,9 @@ var bodyParser = require('body-parser');
 var uuid = require("uuid");
 var AWS = require("aws-sdk");
 var fs = require('fs');
+//var url = require('url');
+//var url_parts = url.parse(request.url, true);
+//var query = url_parts.query;
 
 //var routes = require('./public/views/index.html');
 //var users = require('./routes/users');
@@ -29,23 +32,38 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.engine('ejs', require('ejs').renderFile);
 app.set('view engine', 'ejs');
 
+//app.get('/public/javascript/get.js', (req, res) => {res.renderStatic}
+var finished = 0;
 app.all('/', (req, res) => {
     //console.log(typeof req.body.Vin + ' Here');
     console.log(req.body);
     if (req.body.Vin) {
         if (req.body.Check) {
-            handleSearch(req);
+             handleSearch(req, res);
+            
+        
+
         }
         //console.log(req.body.Vin);
         else {
-            handleUpdate(req);
+             handleUpdate(req);
+           
+            
         }
     }
     res.render('index', {
         title: 'Justin',
         Vin: ''
     }); });
-
+app.all('/get', async function (req, res) {
+    //console.log(req.query.Vin);
+    var vin = req.query.Vin;
+    var mileage = handleSearch(vin, res);
+    console.log("here");
+    console.log(mileage);
+    
+    
+});
 app.post('/', function (req, res) {
 
     console.log(req.body.Vin);
@@ -125,14 +143,13 @@ function handleUpdate(req) {
     });
 }
 
-function handleSearch(req) {
+async function handleSearch(Vin, res) {
     AWS.config.update({
         region: "us-east-2"
     });
     var docClient = new AWS.DynamoDB.DocumentClient();
-
     var table = "Mileage";
-    var vin = req.body.Vin;
+    var vin = Vin;
     var car = "GTR";
     var color = "Silver";
     // console.log(vin);
@@ -150,10 +167,19 @@ function handleSearch(req) {
         } else {
             var stuff = JSON.stringify(data);
             console.log(data.Items.length);
+            var mileage = 0;
             for (var x = 0; x < data.Items.length; x++) {
-                console.log(JSON.stringify(data.Items[x]));
+                console.log(mileage);
+                if (parseInt(data.Items[x].Mileage) > mileage) { mileage = data.Items[x].Mileage;}
+                
             }
+            console.log("Final mileage "  + mileage.toString());
+            res.send(mileage.toString());
+            
+           
+            
         }
+
     });
 
 }
