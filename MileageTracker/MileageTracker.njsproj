@@ -37,18 +37,32 @@
     <Compile Include="public\javascript\get.js">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="public\javascript\jquery.slicebox.js" />
+    <Compile Include="public\javascript\modernizr.custom.46884.js" />
     <Compile Include="public\javascript\put.js" />
     <Compile Include="routes\index.js" />
     <Compile Include="routes\users.js" />
     <Content Include="package.json" />
+    <Content Include="public\images\1.jpg" />
+    <Content Include="public\images\2.jpg" />
+    <Content Include="public\images\3.jpg" />
+    <Content Include="public\images\fancy_deboss.png" />
+    <Content Include="public\images\FB_IMG_1533563401992.jpg" />
     <Content Include="public\images\gtr.jpg" />
+    <Content Include="public\images\IMG_20170925_233059_460.jpg" />
+    <Content Include="public\images\JustinFranz_GTRKID.jpg" />
+    <Content Include="public\images\received_1936821043237488.jpeg" />
+    <Content Include="public\images\shadow.png" />
     <Content Include="public\Partials\head.ejs">
       <SubType>Code</SubType>
     </Content>
     <Content Include="public\Partials\header.ejs">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="public\stylesheets\custom.css" />
+    <Content Include="public\stylesheets\demo.css" />
     <Content Include="public\stylesheets\main.css" />
+    <Content Include="public\stylesheets\slicebox.css" />
     <Content Include="public\Views\index - Copy.html" />
     <Content Include="public\Views\index.html">
       <SubType>Code</SubType>

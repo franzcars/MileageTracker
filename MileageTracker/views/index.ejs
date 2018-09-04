@@ -2,10 +2,41 @@
 <% include ../public/Partials/header %>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript" src="/javascript/get.js"></script>
+<link rel="stylesheet" href="/stylesheets/slicebox.css">
+<link rel="stylesheet" href="/stylesheets/custom.css">
 
-    <div class="w3-light-grey">
-        <img class="image center w3-light-grey" src=".\images\gtr.jpg">
-    </div>
+<script type="text/javascript" src="javascript/modernizr.custom.46884.js"></script>
+
+
+
+<div class="wrapper w3-light-grey">
+
+				<ul id="sb-slider" class="sb-slider">
+					<li>
+						<a href="http://www.flickr.com/photos/strupler/2969141180" target="_blank"><img class="image center w3-light-grey" src="images/1.jpg" alt="image1"/></a>
+
+					</li>
+					<li>
+						<a href="http://www.flickr.com/photos/strupler/2968268187" target="_blank"><img class="image center w3-light-grey" src="images/2.jpg" alt="image2"/></a>
+
+					</li>
+					<li>
+						<a href="http://www.flickr.com/photos/strupler/2968114825" target="_blank"><img class="image center w3-light-grey" src="images/3.jpg" alt="image1"/></a>
+					</li>
+				
+				</ul>
+
+				<div id="shadow" class="shadow"></div>
+
+				<div id="nav-arrows" class="nav-arrows">
+					<a href="#">Next</a>
+					<a href="#">Previous</a>
+				</div>
+
+				
+			</div>
+
+
     <div class="w3-containter w3-displaycontainer w3-center w3-light-grey">
         <div class="jumbotron w3-container">
             <h1>Welcome to The Quick Miliage Tracker <%= title %>!</h1>
@@ -37,6 +68,86 @@
         </form>
     </div>
 
+
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+		<script type="text/javascript" src="javascript/jquery.slicebox.js"></script>
+		<script type="text/javascript">
+			$(function() {
+
+				var Page = (function() {
+
+					var $navArrows = $( '#nav-arrows' ).hide(),
+						$navDots = $( '#nav-dots' ).hide(),
+						$nav = $navDots.children( 'span' ),
+						$shadow = $( '#shadow' ).hide(),
+						slicebox = $( '#sb-slider' ).slicebox( {
+							onReady : function() {
+
+								$navArrows.show();
+								$navDots.show();
+								$shadow.show();
+
+							},
+							onBeforeChange : function( pos ) {
+
+								$nav.removeClass( 'nav-dot-current' );
+								$nav.eq( pos ).addClass( 'nav-dot-current' );
+
+							}
+						} ),
+						
+						init = function() {
+
+							initEvents();
+							
+						},
+						initEvents = function() {
+
+							// add navigation events
+							$navArrows.children( ':first' ).on( 'click', function() {
+
+								slicebox.next();
+								return false;
+
+							} );
+
+							$navArrows.children( ':last' ).on( 'click', function() {
+								
+								slicebox.previous();
+								return false;
+
+							} );
+
+							$nav.each( function( i ) {
+							
+								$( this ).on( 'click', function( event ) {
+									
+									var $dot = $( this );
+									
+									if( !slicebox.isActive() ) {
+
+										$nav.removeClass( 'nav-dot-current' );
+										$dot.addClass( 'nav-dot-current' );
+									
+									}
+									
+									slicebox.jump( i + 1 );
+									return false;
+								
+								} );
+								
+							} );
+
+						};
+
+						return { init : init };
+
+				})();
+
+				Page.init();
+
+			});
+		</script>
 
 </body>
 
